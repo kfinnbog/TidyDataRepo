@@ -1,4 +1,4 @@
-#Data load:run
+#Data load
 X_train <- read.table("./X_train.txt", quote="\"")
 Y_train <- read.table("./Y_train.txt", quote="\"")
 Y_test <- read.table("./Y_test.txt", quote="\"")
@@ -11,13 +11,15 @@ act_labels<- read.table("./activity_labels.txt", quote="\"")
 #DPLYR Load:
 
 library("dplyr", lib.loc="/Library/Frameworks/R.framework/Versions/3.1/Resources/library")
-#Data labelling:
+
+#Label creation:
 labels<-gsub("()","",labels$V2,fixed=TRUE)
 labels<-gsub("(","",labels,fixed=TRUE)
 labels<-gsub(")","",labels,fixed=TRUE)
 labels<-gsub("-","",labels,fixed=TRUE)
 labels<-gsub(",","",labels,fixed=TRUE)
 
+#Data labelling:
 names_vector <- labels
 names(X_train) <- names_vector
 names(X_test) <- names_vector
